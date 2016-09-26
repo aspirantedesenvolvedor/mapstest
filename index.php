@@ -27,6 +27,7 @@
 
     <!-- iVega core CSS file -->
     <link href="css/style.css" rel="stylesheet">
+
   </head>
 
 
@@ -61,27 +62,42 @@
     <!-- Mapa -->
     <div id="map" style="height: 500px; width: 100%"></div>
 
-  </div>
 
-  <div class="main-content-wrapper">
-   <div class="container">
-    <div class="row">
+    <div class="main-content-wrapper">
+     <div class="container">
+      <div class="row">
+        <section class="main-content col-sm-6">
+                <h3>Tabela de dispositivos</h3>
+                <table id="tabela" class="table" style="width:100%">
+                  <thead>
+                     <th>Dispositivo</th>
+                     <th>Localização</th>
+                  </thead>
+                  <tbody>
 
-     <section class="main-content col-md-6">
-      <h1 class="title">Exemplo</h1>
-      <p>Demonstrar algumas funcionalidades do Google API Maps com Javascript. Por favor, verificar anotações no cabeçalho do Source Code
-        dessa página. <br>
-        <br>
-        Funcionalidades apresentadas:<br>
-        -Adição de Mapa do Google;<br>
-        -Adição de multiplos ícones (Markers);
-        -Personalização de Marcadores;<br>
-        -Adição de caixa de texto (infoWindow) com informações personalizadas, inclusive links;<br>
-      </p>
-    </section>
+                 </tbody>
+                 <tfoot>
 
-  </div>
-</div>
+                 </tfoot>
+               </table>
+             </section>
+      </div>
+      <div class="row">
+               <section class="main-content col-md-8">
+                <h1 class="title">Exemplo</h1>
+                <p>Demonstrar algumas funcionalidades do Google API Maps com Javascript. Por favor, verificar anotações no cabeçalho do Source Code
+                  dessa página. <br>
+                  <br>
+                  Funcionalidades apresentadas:<br>
+                  -Adição de Mapa do Google;<br>
+                  -Adição de multiplos ícones (Markers);
+                  -Personalização de Marcadores;<br>
+                  -Adição de caixa de texto (infoWindow) com informações personalizadas, inclusive links;<br>
+                </p>
+
+              </section>
+   </div>
+ </div>
 </div>
 
 
@@ -89,6 +105,7 @@
 <!-- main end -->
 
 </div>
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 <script src="js/personalisedmaps.js"></script>
 
 <script type="text/javascript">
