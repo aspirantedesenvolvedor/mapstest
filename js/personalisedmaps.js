@@ -51,11 +51,11 @@ function initMap() {
 // Matriz de dados contendo nome, latitude e longitude, id, informações personalizadas
 
 var place = [
-['Servidor 1', -5.61712877, -35.28920898, 0, '<div id="ip1"><p>ip: 192.168.1.1<br>MAC: 20:10:e5:A1<br>Clique <a href="index.php">aqui</a> para editar</p></div>', 'servidor', 'on', 'null'],
-['Roteador 1', -5.81712877, -35.38920898, 1, '<div id="ip2"><p>ip: 192.168.1.2<br>MAC: 22:50:e5:A2<br>Clique <a href="index.php">aqui</a> para editar</p></div>', 'roteador', 'off', 'null'],
-['Servidor 2', -5.51712877, -35.48920898, 2, '<div id="ip3"><p>ip: 192.168.1.3<br>MAC: 30:44:e5:B2<br>Clique <a href="index.php">aqui</a> para editar</p></div>', 'servidor', 'off', 'null'],
-['Servidor 3', -5.91712877, -35.58920898, 3, '<div id="ip4"><p>ip: 192.168.1.4<br>MAC: 77:10:F1:A1<br>Clique <a href="index.php">aqui</a> para editar</p></div>', 'servidor', 'on', 'null'],
-['Roteador 2', -5.81712877, -35.68920898, 4, '<div id="ip5"><p>ip: 192.168.1.5<br>MAC: 02:30:e1:B3<br>Clique <a href="index.php">aqui</a> para editar</p></div>', 'roteador', 'on', 'null']
+['Servidor 1', -5.61712877, -35.28920898, 0, '<div id="ip1"><p>ip: 192.168.1.1<br>MAC: 20:10:e5:A1<br></div>', 'servidor', 'on', 'null'],
+['Roteador 1', -5.81712877, -35.38920898, 1, '<div id="ip2"><p>ip: 192.168.1.2<br>MAC: 22:50:e5:A2<br></div>', 'roteador', 'off', 'null'],
+['Servidor 2', -5.51712877, -35.48920898, 2, '<div id="ip3"><p>ip: 192.168.1.3<br>MAC: 30:44:e5:B2<br></div>', 'servidor', 'off', 'null'],
+['Servidor 3', -5.91712877, -35.58920898, 3, '<div id="ip4"><p>ip: 192.168.1.4<br>MAC: 77:10:F1:A1<br></div>', 'servidor', 'on', 'null'],
+['Roteador 2', -5.81712877, -35.68920898, 4, '<div id="ip5"><p>ip: 192.168.1.5<br>MAC: 02:30:e1:B3<br></div>', 'roteador', 'on', 'null']
 ];
 
 var markers = [];
@@ -98,12 +98,13 @@ function setMarkers(map) {
 		content = pl[4];
 		google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
 			return function() {
-				htmlCode = '<div><input type=button value="teste" onclick="changeDeviceStatus('+marker.zIndex+');"></input></div>';
+				htmlCode = '<div><input type=button value="ligar/desligar dispositivo" onclick="changeDeviceStatus('+marker.zIndex+');"></input></div>';
 
 				for (i = 0; i < place.length; i++) {
 					pl = place[i];
 					if(pl[3]==marker.zIndex && pl[7] == 'null'){
 						content = content + htmlCode;
+						place[i][7] = 'clicked';
 					}
 				}
 				infowindow.setContent(content);
@@ -123,16 +124,15 @@ function changeDeviceStatus(zIndex, icon){
 			device = pl[5];
 			if(pl[6] == 'on' ){
 				place[i][6] = 'off';
-				place[i][7] = 'statusChanged';
+				
 				break;
 			}
 			else{
 				place[i][6] = 'on';
-				place[i][7] = 'statusChanged';
 				break;
 			}
 		}
-		
+
 	}
 	image = selectImage(device, place[i][6]);
 	markers[zIndex].setIcon(image);
